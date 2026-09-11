@@ -173,13 +173,13 @@ body{font-family:var(--font-sans);background:var(--bg-base);color:var(--text-pri
 /* ── CONTENT ── */
 .content{
   flex:1;overflow-y:auto;overflow-x:hidden;
-  padding:1.25rem;
-  padding-bottom:calc(var(--botnav-h) + 1rem);
+  padding:1rem 1.25rem;
+  padding-bottom:calc(var(--botnav-h) + 1.5rem);
 }
 
 /* ── PAGES ── */
 .page{display:none}
-.page.active{display:flex;flex-direction:column;gap:1.1rem;animation:fadeUp .28s ease}
+.page.active{display:flex;flex-direction:column;gap:1.25rem;animation:fadeUp .28s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
 /* ── GLASS CARD ── */
@@ -215,10 +215,10 @@ body{font-family:var(--font-sans);background:var(--bg-base);color:var(--text-pri
 /* ══════════════════════════════════════
    KPI CARDS GRID
 ══════════════════════════════════════ */
-.kpi-section-label{font-size:.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}
-.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem}
+.kpi-section-label{font-size:.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.75rem}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
 .kpi-card{
-  padding:1rem;display:flex;flex-direction:column;gap:.5rem;
+  padding:1.25rem 1.1rem;display:flex;flex-direction:column;gap:.6rem;
   position:relative;overflow:hidden;transition:transform var(--t-base);
 }
 .kpi-card:hover{transform:translateY(-2px)}
@@ -227,7 +227,7 @@ body{font-family:var(--font-sans);background:var(--bg-base);color:var(--text-pri
 .kpi-expense::after{background:var(--danger)}
 .kpi-profit::after{background:var(--accent)}
 .kpi-qty::after{background:var(--accent-3)}
-.kpi-icon{width:34px;height:34px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.kpi-icon{width:36px;height:36px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0}
 .kpi-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted)}
 .kpi-val{font-size:1.15rem;font-weight:800;font-family:var(--font-num);letter-spacing:-.02em;color:var(--text-primary)}
 
@@ -246,33 +246,32 @@ body{font-family:var(--font-sans);background:var(--bg-base);color:var(--text-pri
 /* ══════════════════════════════════════
    CHARTS — FULLY RESPONSIVE
 ══════════════════════════════════════ */
-.charts-wrap{display:grid;grid-template-columns:1fr 300px;gap:.85rem;align-items:start}
+.charts-wrap{display:grid;grid-template-columns:1fr 300px;gap:1rem;align-items:start}
 .chart-card{padding:1.1rem}
 .chart-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.85rem;flex-wrap:wrap;gap:.5rem}
 .chart-title{font-size:.88rem;font-weight:700;color:var(--text-secondary)}
 .chart-period-tabs{display:flex;gap:3px;background:var(--bg-elevated);padding:3px;border-radius:var(--r-full)}
 .cpt-btn{padding:3px 10px;border-radius:var(--r-full);font-size:.7rem;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--text-muted);transition:all var(--t-fast);font-family:var(--font-sans)}
 .cpt-btn.active{background:var(--bg-surface);color:var(--accent);box-shadow:var(--shadow-sm)}
-/* PENTING: canvas harus punya height yang fix */
 .chart-bar-wrap{position:relative;width:100%;height:200px}
 .chart-bar-wrap canvas{position:absolute;inset:0;width:100%!important;height:100%!important}
 
-/* Donut */
-.donut-outer{display:flex;flex-direction:column;align-items:center;gap:.75rem}
-.donut-ring-wrap{position:relative;width:140px;height:140px;flex-shrink:0}
+/* Donut — centered, tanpa legend list */
+.donut-only-wrap{display:flex;flex-direction:column;align-items:center;gap:.9rem;padding:.35rem 0}
+.donut-ring-wrap{position:relative;flex-shrink:0}
 .donut-ring-wrap canvas{position:absolute;inset:0;width:100%!important;height:100%!important}
 .donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
 .donut-total-lbl{font-size:.58rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted)}
 .donut-total{font-size:.92rem;font-weight:800;font-family:var(--font-num);color:var(--text-primary)}
-.donut-legend{display:flex;flex-direction:column;gap:.35rem;width:100%}
-.legend-row{display:flex;align-items:center;gap:.45rem;font-size:.75rem;color:var(--text-secondary)}
-.legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.legend-val{margin-left:auto;font-family:var(--font-num);font-size:.72rem;color:var(--text-muted)}
+/* Mini legend di bawah donut — chips kecil */
+.donut-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:.35rem .5rem;width:100%}
+.donut-chip{display:flex;align-items:center;gap:.3rem;font-size:.7rem;color:var(--text-secondary);font-weight:500}
+.donut-chip-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 
 /* ══════════════════════════════════════
    BOTTOM GRID (prod perf + recent tx)
 ══════════════════════════════════════ */
-.bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+.bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .inner-card{padding:1.1rem}
 .sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem}
 .sec-title{font-size:.88rem;font-weight:700;color:var(--text-primary)}
@@ -436,19 +435,19 @@ input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none}
 }
 .bn-tab.active{color:var(--accent)}
 .bn-tab.active::after{content:'';position:absolute;top:0;left:20%;right:20%;height:2px;background:var(--accent);border-radius:0 0 3px 3px}
-.bn-fab{
+/* FAB tombol + di tengah */
+.bn-fab-wrap{
   flex:1;display:flex;align-items:center;justify-content:center;
-  background:none;border:none;cursor:pointer;
 }
-.bn-fab-inner{
+.bn-fab-btn{
   width:46px;height:46px;border-radius:50%;
   background:linear-gradient(135deg,var(--accent),var(--accent-2));
-  display:flex;align-items:center;justify-content:center;
-  color:#fff;position:relative;bottom:10px;
+  border:none;display:flex;align-items:center;justify-content:center;
+  color:#fff;position:relative;bottom:10px;cursor:pointer;
   box-shadow:0 4px 14px var(--accent-soft),0 0 0 4px var(--bg-surface);
   transition:transform var(--t-fast),box-shadow var(--t-fast);
 }
-.bn-fab:hover .bn-fab-inner{transform:scale(1.07)}
+.bn-fab-btn:hover{transform:scale(1.07)}
 
 /* ══════════════════════════════════════
    MODALS
@@ -487,6 +486,7 @@ input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none}
 @keyframes slideR{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
 .empty{text-align:center;padding:2rem;color:var(--text-muted)}
 .empty-ico{font-size:2rem;margin-bottom:.5rem}
+.hidden{display:none!important}
 
 /* ══════════════════════════════════════
    RESPONSIVE BREAKPOINTS
@@ -495,9 +495,6 @@ input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none}
 /* TABLET 600–1023px */
 @media(max-width:1023px){
   .charts-wrap{grid-template-columns:1fr}
-  .donut-outer{flex-direction:row;align-items:flex-start;gap:1rem}
-  .donut-ring-wrap{width:120px;height:120px;flex-shrink:0}
-  .donut-legend{flex:1}
   .bottom-grid{grid-template-columns:1fr}
   .kpi-grid{grid-template-columns:repeat(2,1fr)}
 }
@@ -506,27 +503,27 @@ input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none}
 @media(max-width:768px){
   .bottom-nav{display:flex}
   .topbar-nav-wrap{display:none}
-  .content{padding:.85rem;padding-bottom:calc(var(--botnav-h) + 1rem)}
-  .kpi-grid{grid-template-columns:repeat(2,1fr);gap:.6rem}
+  .content{padding:.85rem;padding-bottom:calc(var(--botnav-h) + 1.25rem)}
+  .page.active{gap:1rem}
+  .kpi-grid{grid-template-columns:repeat(2,1fr);gap:.75rem}
   .kpi-val{font-size:1rem}
-  .charts-wrap{grid-template-columns:1fr;gap:.7rem}
+  .kpi-card{padding:1rem .9rem}
+  .charts-wrap{grid-template-columns:1fr;gap:.85rem}
   .chart-bar-wrap{height:170px}
-  .donut-outer{flex-direction:row;align-items:flex-start;gap:.85rem}
-  .donut-ring-wrap{width:110px;height:110px;flex-shrink:0}
-  .donut-legend{flex:1}
-  .bottom-grid{grid-template-columns:1fr;gap:.7rem}
+  .bottom-grid{grid-template-columns:1fr;gap:.85rem}
   .stat-row{grid-template-columns:repeat(2,1fr)}
   .greeting{padding:1.1rem 1.1rem}
   .greeting-title{font-size:1rem}
   .greeting-narasi{font-size:.82rem;padding:.6rem .8rem}
   .grid-2{grid-template-columns:1fr}
   .toast-wrap{bottom:calc(var(--botnav-h) + .5rem);right:.75rem}
+  .donut-chips{max-width:200px}
 }
 
 /* LARGE DESKTOP ≥1280px */
 @media(min-width:1280px){
   .content{max-width:1080px;margin:0 auto;padding:1.5rem 2rem}
-  .charts-wrap{grid-template-columns:1fr 280px}
+  .charts-wrap{grid-template-columns:1fr 300px}
 }
 </style>
 </head>
@@ -551,9 +548,13 @@ input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none}
   </div>
   <nav class="sb-nav">
     <div class="sb-group-label">Menu Utama</div>
-    <button class="sb-item active" data-page="dashboard">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-      Dashboard
+    <button class="sb-item active" data-page="dashboard" data-dash="harian">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 1 0 20A10 10 0 0 1 12 2z"/><polyline points="12 6 12 12 16 14"/></svg>
+      Hari Ini
+    </button>
+    <button class="sb-item" data-page="dashboard" data-dash="bulanan">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Bulanan
     </button>
     <button class="sb-item" data-page="transaksi">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
@@ -591,9 +592,13 @@ input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none}
     </button>
     <div class="topbar-nav-wrap">
       <div class="topbar-nav">
-        <button class="topbar-tab active" data-page="dashboard">
+        <button class="topbar-tab active" data-page="dashboard" data-dash="harian">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-          Dashboard
+          Hari Ini
+        </button>
+        <button class="topbar-tab" data-page="dashboard" data-dash="bulanan">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Bulanan
         </button>
         <button class="topbar-tab" data-page="transaksi">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
@@ -626,8 +631,8 @@ input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none}
     <!-- ═══ DASHBOARD ═══ -->
     <section class="page active" id="page-dashboard">
 
-      <!-- GREETING + NARASI -->
-      <div class="greeting">
+      <!-- GREETING + NARASI — hanya di halaman harian -->
+      <div class="greeting" id="greeting-block">
         <div class="greeting-head">
           <div class="greeting-title" id="g-title">🍽️ Lesehan Nong Ena</div>
           <div class="greeting-badge" id="g-badge">Sep 2026</div>
@@ -635,115 +640,126 @@ input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none}
         <div class="greeting-narasi" id="g-narasi">Memuat ringkasan...</div>
       </div>
 
-      <!-- REKAP TAB SWITCH -->
-      <div>
-        <div class="rekap-tabs">
-          <button class="rekap-tab active" id="tab-harian" onclick="switchRekap('harian')">📅 Hari Ini</button>
-          <button class="rekap-tab" id="tab-bulanan" onclick="switchRekap('bulanan')">📆 Bulan Ini</button>
-        </div>
-
-        <!-- REKAP HARIAN -->
-        <div id="rekap-harian">
-          <div class="kpi-section-label" id="kpi-harian-label">Rekap Hari Ini</div>
-          <div class="kpi-grid">
-            <div class="card kpi-card kpi-income">
-              <div class="kpi-icon" style="background:rgba(52,211,153,.12);color:var(--success)">💰</div>
-              <div class="kpi-label" style="color:var(--success)">Pendapatan</div>
-              <div class="kpi-val" id="kh-income">Rp 0</div>
-            </div>
-            <div class="card kpi-card kpi-expense">
-              <div class="kpi-icon" style="background:rgba(248,113,113,.12);color:var(--danger)">🛒</div>
-              <div class="kpi-label" style="color:var(--danger)">Pengeluaran</div>
-              <div class="kpi-val" id="kh-expense">Rp 0</div>
-            </div>
-            <div class="card kpi-card kpi-profit">
-              <div class="kpi-icon" style="background:var(--accent-soft);color:var(--accent)">📈</div>
-              <div class="kpi-label" style="color:var(--accent)">Laba Bersih</div>
-              <div class="kpi-val" id="kh-profit">Rp 0</div>
-            </div>
-            <div class="card kpi-card kpi-qty">
-              <div class="kpi-icon" style="background:var(--accent-3-soft);color:var(--accent-3)">📦</div>
-              <div class="kpi-label" style="color:var(--accent-3)">Total Jual</div>
-              <div class="kpi-val" id="kh-qty">0 item</div>
-            </div>
+      <!-- ═══ HALAMAN HARIAN ═══ -->
+      <div id="dash-harian">
+        <div class="kpi-section-label" id="kpi-harian-label">Rekap Hari Ini</div>
+        <div class="kpi-grid">
+          <div class="card kpi-card kpi-income">
+            <div class="kpi-icon" style="background:rgba(52,211,153,.12);color:var(--success)">💰</div>
+            <div class="kpi-label" style="color:var(--success)">Pendapatan</div>
+            <div class="kpi-val" id="kh-income">Rp 0</div>
+          </div>
+          <div class="card kpi-card kpi-expense">
+            <div class="kpi-icon" style="background:rgba(248,113,113,.12);color:var(--danger)">🛒</div>
+            <div class="kpi-label" style="color:var(--danger)">Pengeluaran</div>
+            <div class="kpi-val" id="kh-expense">Rp 0</div>
+          </div>
+          <div class="card kpi-card kpi-profit">
+            <div class="kpi-icon" style="background:var(--accent-soft);color:var(--accent)">📈</div>
+            <div class="kpi-label" style="color:var(--accent)">Laba Bersih</div>
+            <div class="kpi-val" id="kh-profit">Rp 0</div>
+          </div>
+          <div class="card kpi-card kpi-qty">
+            <div class="kpi-icon" style="background:var(--accent-3-soft);color:var(--accent-3)">📦</div>
+            <div class="kpi-label" style="color:var(--accent-3)">Total Jual</div>
+            <div class="kpi-val" id="kh-qty">0 item</div>
           </div>
         </div>
 
-        <!-- REKAP BULANAN -->
-        <div id="rekap-bulanan" class="hidden">
-          <div class="kpi-section-label" id="kpi-bulanan-label">Rekap Bulan Ini</div>
-          <div class="kpi-grid">
-            <div class="card kpi-card kpi-income">
-              <div class="kpi-icon" style="background:rgba(52,211,153,.12);color:var(--success)">💰</div>
-              <div class="kpi-label" style="color:var(--success)">Total Omzet</div>
-              <div class="kpi-val" id="kb-income">Rp 0</div>
-            </div>
-            <div class="card kpi-card kpi-expense">
-              <div class="kpi-icon" style="background:rgba(248,113,113,.12);color:var(--danger)">🛒</div>
-              <div class="kpi-label" style="color:var(--danger)">Total Keluar</div>
-              <div class="kpi-val" id="kb-expense">Rp 0</div>
-            </div>
-            <div class="card kpi-card kpi-profit">
-              <div class="kpi-icon" style="background:var(--accent-soft);color:var(--accent)">📈</div>
-              <div class="kpi-label" style="color:var(--accent)">Laba Bersih</div>
-              <div class="kpi-val" id="kb-profit">Rp 0</div>
-            </div>
-            <div class="card kpi-card kpi-qty">
-              <div class="kpi-icon" style="background:var(--accent-3-soft);color:var(--accent-3)">📦</div>
-              <div class="kpi-label" style="color:var(--accent-3)">Total Item</div>
-              <div class="kpi-val" id="kb-qty">0 item</div>
-            </div>
+        <div class="charts-wrap">
+          <div class="card chart-card">
+            <div class="chart-head"><span class="chart-title">Tren 7 Hari Terakhir</span></div>
+            <div class="chart-bar-wrap"><canvas id="c-omzet-h"></canvas></div>
           </div>
-        </div>
-      </div>
-
-      <!-- CHARTS -->
-      <div class="charts-wrap">
-        <!-- BAR CHART OMZET -->
-        <div class="card chart-card">
-          <div class="chart-head">
-            <span class="chart-title">Tren Omzet</span>
-            <div class="chart-period-tabs">
-              <button class="cpt-btn active" data-r="7">7H</button>
-              <button class="cpt-btn" data-r="14">14H</button>
-              <button class="cpt-btn" data-r="30">30H</button>
-            </div>
-          </div>
-          <div class="chart-bar-wrap">
-            <canvas id="c-omzet"></canvas>
-          </div>
-        </div>
-
-        <!-- DONUT DISTRIBUSI -->
-        <div class="card chart-card">
-          <div class="chart-head">
-            <span class="chart-title">Distribusi Produk</span>
-          </div>
-          <div class="donut-outer">
-            <div class="donut-ring-wrap">
-              <canvas id="c-dist"></canvas>
-              <div class="donut-center">
-                <div class="donut-total-lbl">Omzet</div>
-                <div class="donut-total" id="d-total">Rp 0</div>
+          <div class="card chart-card">
+            <div class="chart-head"><span class="chart-title">Produk Hari Ini</span></div>
+            <div class="donut-only-wrap">
+              <div class="donut-ring-wrap" style="width:150px;height:150px">
+                <canvas id="c-dist-h"></canvas>
+                <div class="donut-center">
+                  <div class="donut-total-lbl">Omzet</div>
+                  <div class="donut-total" id="dh-total">Rp 0</div>
+                </div>
               </div>
+              <div class="donut-chips" id="dh-chips"></div>
             </div>
-            <div class="donut-legend" id="d-legend"></div>
           </div>
         </div>
-      </div>
 
-      <!-- BOTTOM GRID -->
-      <div class="bottom-grid">
-        <div class="card inner-card">
-          <div class="sec-head"><span class="sec-title">Performa Produk</span></div>
-          <div id="prod-perf"></div>
-        </div>
         <div class="card inner-card">
           <div class="sec-head">
-            <span class="sec-title">Transaksi Terbaru</span>
+            <span class="sec-title">Transaksi Hari Ini</span>
             <button class="sec-see-all" onclick="goPage('riwayat')">Semua</button>
           </div>
-          <div id="recent-tx"></div>
+          <div id="today-tx"></div>
+        </div>
+      </div>
+
+      <!-- ═══ HALAMAN BULANAN ═══ -->
+      <div id="dash-bulanan" style="display:none">
+        <div class="kpi-section-label" id="kpi-bulanan-label">Rekap Bulan Ini</div>
+        <div class="kpi-grid">
+          <div class="card kpi-card kpi-income">
+            <div class="kpi-icon" style="background:rgba(52,211,153,.12);color:var(--success)">💰</div>
+            <div class="kpi-label" style="color:var(--success)">Total Omzet</div>
+            <div class="kpi-val" id="kb-income">Rp 0</div>
+          </div>
+          <div class="card kpi-card kpi-expense">
+            <div class="kpi-icon" style="background:rgba(248,113,113,.12);color:var(--danger)">🛒</div>
+            <div class="kpi-label" style="color:var(--danger)">Total Keluar</div>
+            <div class="kpi-val" id="kb-expense">Rp 0</div>
+          </div>
+          <div class="card kpi-card kpi-profit">
+            <div class="kpi-icon" style="background:var(--accent-soft);color:var(--accent)">📈</div>
+            <div class="kpi-label" style="color:var(--accent)">Laba Bersih</div>
+            <div class="kpi-val" id="kb-profit">Rp 0</div>
+          </div>
+          <div class="card kpi-card kpi-qty">
+            <div class="kpi-icon" style="background:var(--accent-3-soft);color:var(--accent-3)">📦</div>
+            <div class="kpi-label" style="color:var(--accent-3)">Total Item</div>
+            <div class="kpi-val" id="kb-qty">0 item</div>
+          </div>
+        </div>
+
+        <div class="charts-wrap">
+          <div class="card chart-card">
+            <div class="chart-head">
+              <span class="chart-title">Tren Omzet Bulanan</span>
+              <div class="chart-period-tabs">
+                <button class="cpt-btn active" data-r="7">7H</button>
+                <button class="cpt-btn" data-r="14">14H</button>
+                <button class="cpt-btn" data-r="30">30H</button>
+              </div>
+            </div>
+            <div class="chart-bar-wrap"><canvas id="c-omzet"></canvas></div>
+          </div>
+          <div class="card chart-card">
+            <div class="chart-head"><span class="chart-title">Distribusi Produk Bulan Ini</span></div>
+            <div class="donut-only-wrap">
+              <div class="donut-ring-wrap" style="width:150px;height:150px">
+                <canvas id="c-dist"></canvas>
+                <div class="donut-center">
+                  <div class="donut-total-lbl">Omzet</div>
+                  <div class="donut-total" id="d-total">Rp 0</div>
+                </div>
+              </div>
+              <div class="donut-chips" id="d-chips"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-grid">
+          <div class="card inner-card">
+            <div class="sec-head"><span class="sec-title">Performa Produk</span></div>
+            <div id="prod-perf"></div>
+          </div>
+          <div class="card inner-card">
+            <div class="sec-head">
+              <span class="sec-title">Transaksi Terbaru</span>
+              <button class="sec-see-all" onclick="goPage('riwayat')">Semua</button>
+            </div>
+            <div id="recent-tx"></div>
+          </div>
         </div>
       </div>
 
@@ -883,18 +899,22 @@ input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none}
 
   <!-- BOTTOM NAV -->
   <nav class="bottom-nav">
-    <button class="bn-tab active" data-page="dashboard">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-      <span>Dashboard</span>
+    <button class="bn-tab active" data-page="dashboard" data-dash="harian">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 1 0 20A10 10 0 0 1 12 2z"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span>Hari Ini</span>
     </button>
+    <button class="bn-tab" data-page="dashboard" data-dash="bulanan">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span>Bulanan</span>
+    </button>
+    <div class="bn-fab-wrap">
+      <button class="bn-fab-btn" onclick="goPage('transaksi')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+    </div>
     <button class="bn-tab" data-page="riwayat">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
       <span>Riwayat</span>
-    </button>
-    <button class="bn-fab" onclick="goPage('transaksi')">
-      <div class="bn-fab-inner">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      </div>
     </button>
     <button class="bn-tab" data-page="pengaturan">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
@@ -946,6 +966,7 @@ const D = {
   curType:'income',
   rekapMode:'harian',
   _prods:[],
+  editPkId:null,
 };
 
 const DEFAULT = [
@@ -961,23 +982,37 @@ const fmt  = n => 'Rp '+Math.round(n).toLocaleString('id-ID');
 const fmtS = n => { n=Math.abs(Math.round(n)); if(n>=1000000)return 'Rp '+(n/1000000).toFixed(1)+'jt'; if(n>=1000)return 'Rp '+(n/1000).toFixed(0)+'rb'; return 'Rp '+n; };
 const fmtDate = s => new Date(s+'T00:00:00').toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});
 const td = () => new Date().toISOString().slice(0,10);
-const allProds = () => [...DEFAULT,...D.products];
+// Gabungkan DEFAULT + custom; jika ada override default di D.products, pakai versi custom-nya
+const allProds = () => {
+  const overrideIds = new Set(D.products.map(p=>p.id));
+  const baseDefaults = DEFAULT.filter(d=>!overrideIds.has(d.id));
+  return [...baseDefaults,...D.products];
+};
 
 /* ══════════════════════════════════════
    NAVIGATION
 ══════════════════════════════════════ */
-function goPage(id){
+function goPage(id, dashMode){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
-  document.querySelectorAll('[data-page]').forEach(el=>el.classList.toggle('active',el.dataset.page===id));
+  // Update active state semua nav item
+  document.querySelectorAll('[data-page]').forEach(el=>{
+    const samePage = el.dataset.page === id;
+    const sameDash = !el.dataset.dash || !dashMode || el.dataset.dash === dashMode;
+    el.classList.toggle('active', samePage && sameDash);
+  });
   closeSidebar();
   document.getElementById('content').scrollTop=0;
   if(id==='transaksi') initTxPage();
   if(id==='riwayat')   renderRiwayat();
   if(id==='pengaturan')renderSettings();
+  if(id==='dashboard' && dashMode) switchDashTab(dashMode);
+  else if(id==='dashboard') renderDash();
 }
 document.querySelectorAll('[data-page]').forEach(el=>{
-  el.addEventListener('click',()=>{ if(el.dataset.page) goPage(el.dataset.page); });
+  el.addEventListener('click',()=>{
+    if(el.dataset.page) goPage(el.dataset.page, el.dataset.dash||null);
+  });
 });
 
 /* SIDEBAR */
@@ -985,41 +1020,93 @@ const openSidebar  = () => { document.getElementById('sidebar').classList.add('o
 const closeSidebar = () => { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sb-overlay').classList.remove('show'); };
 
 /* ══════════════════════════════════════
-   REKAP TAB SWITCH
+   DASHBOARD TAB SWITCH (Harian / Bulanan)
 ══════════════════════════════════════ */
-function switchRekap(mode){
+function switchDashTab(mode){
   D.rekapMode=mode;
-  document.getElementById('tab-harian').classList.toggle('active',mode==='harian');
-  document.getElementById('tab-bulanan').classList.toggle('active',mode==='bulanan');
-  document.getElementById('rekap-harian').classList.toggle('hidden',mode!=='harian');
-  document.getElementById('rekap-bulanan').classList.toggle('hidden',mode!=='bulanan');
+  // Greeting selalu tampil (narasi akan diupdate oleh render masing-masing)
+  const greeting=document.getElementById('greeting-block');
+  if(greeting) greeting.style.display='';
+  // Toggle panel
+  document.getElementById('dash-harian').style.display=mode==='harian'?'':'none';
+  document.getElementById('dash-bulanan').style.display=mode==='bulanan'?'':'none';
+  // Update active state nav
+  document.querySelectorAll('[data-page="dashboard"]').forEach(el=>{
+    el.classList.toggle('active', el.dataset.dash===mode);
+  });
+  // Render + update narasi
+  if(mode==='harian') renderDashHarian();
+  else renderDashBulanan();
 }
 
 /* ══════════════════════════════════════
    NARASI GENERATOR
 ══════════════════════════════════════ */
-function buildNarasi(mInc, mExp, tInc){
+function getSapa(){
+  const jam = new Date().getHours();
+  return jam < 11 ? 'Selamat pagi' : jam < 15 ? 'Selamat siang' : jam < 18 ? 'Selamat sore' : 'Selamat malam';
+}
+
+// Narasi untuk tab HARIAN — fokus data hari ini
+function buildNarasiHarian(tInc, tExp){
+  const tProfit = tInc - tExp;
+  const sapa = getSapa();
+
+  if(tInc === 0 && tExp === 0){
+    return `${sapa}! ☀️ Belum ada transaksi tercatat hari ini. Yuk mulai catat penjualan pertama! 💪`;
+  }
+
+  let kalimat = `${sapa}! 👋 Pemasukan hari ini sudah mencapai <strong>${fmt(tInc)}</strong>`;
+
+  if(tExp > 0){
+    kalimat += `, dengan total pengeluaran <strong>${fmt(tExp)}</strong>`;
+    if(tProfit > 0){
+      kalimat += `, maka laba bersih yang didapatkan adalah <strong style="color:#34d399">${fmt(tProfit)}</strong> 🎉`;
+    } else if(tProfit < 0){
+      kalimat += `. Sayangnya pengeluaran masih lebih besar, minus <strong style="color:#fca5a5">${fmt(Math.abs(tProfit))}</strong> — pantau terus ya! 📊`;
+    } else {
+      kalimat += `. Pemasukan dan pengeluaran hari ini impas 😅`;
+    }
+  } else {
+    kalimat += `. Belum ada pengeluaran tercatat hari ini — laba bersih <strong style="color:#34d399">${fmt(tInc)}</strong> 🎉`;
+  }
+
+  return kalimat;
+}
+
+// Narasi untuk tab BULANAN — fokus ringkasan bulan
+function buildNarasiBulanan(mInc, mExp){
   const mProfit = mInc - mExp;
+  const sapa = getSapa();
   const mName = new Date(D.selectedMonth+'-01').toLocaleDateString('id-ID',{month:'long',year:'numeric'});
 
-  let narasi = '';
-  if(mInc === 0 && tInc === 0){
-    narasi = `Belum ada transaksi tercatat bulan <strong>${mName}</strong>. Yuk mulai catat penjualan hari ini! 💪`;
-  } else {
-    // bagian omzet bulanan
-    const omzetTxt = `Omzet bulan <strong>${mName}</strong> sudah mencapai <strong>${fmt(mInc)}</strong>`;
-    // bagian laba
-    let labaTxt = '';
-    if(mProfit > 0) labaTxt = ` dengan laba bersih <strong>${fmt(mProfit)}</strong>`;
-    else if(mProfit < 0) labaTxt = `, tapi masih rugi <strong>${fmt(Math.abs(mProfit))}</strong> — yuk pantau pengeluaran!`;
-    // bagian hari ini
-    let hariTxt = '';
-    if(tInc > 0) hariTxt = `. Hari ini sudah masuk <strong>${fmt(tInc)}</strong> 🎉`;
-    else hariTxt = `. Belum ada penjualan hari ini, semangat ya! ✨`;
-
-    narasi = omzetTxt + labaTxt + hariTxt;
+  if(mInc === 0){
+    return `${sapa}! ☀️ Belum ada transaksi tercatat bulan <strong>${mName}</strong>. Yuk mulai catat penjualan! 💪`;
   }
-  return narasi;
+
+  let kalimat = `${sapa}! 📊 Total omzet bulan <strong>${mName}</strong> sudah mencapai <strong>${fmt(mInc)}</strong>`;
+
+  if(mExp > 0){
+    kalimat += `, dengan total pengeluaran <strong>${fmt(mExp)}</strong>`;
+    if(mProfit > 0){
+      kalimat += `. Laba bersih bulan ini <strong style="color:#34d399">${fmt(mProfit)}</strong> — mantap terus! 🔥`;
+    } else if(mProfit < 0){
+      kalimat += `. Pengeluaran masih lebih besar dari pemasukan, rugi <strong style="color:#fca5a5">${fmt(Math.abs(mProfit))}</strong> — perlu diefisiensikan nih! 📉`;
+    } else {
+      kalimat += `. Pemasukan dan pengeluaran bulan ini tepat impas 😅`;
+    }
+  } else {
+    kalimat += `. Belum ada pengeluaran, laba bersih <strong style="color:#34d399">${fmt(mInc)}</strong> 🔥`;
+  }
+
+  return kalimat;
+}
+
+// Legacy wrapper (dipakai renderDash sebelum split)
+function buildNarasi(mInc, mExp, tInc, tExp){
+  return D.rekapMode === 'bulanan'
+    ? buildNarasiBulanan(mInc, mExp)
+    : buildNarasiHarian(tInc, tExp);
 }
 
 /* ══════════════════════════════════════
@@ -1029,14 +1116,9 @@ function renderDash(){
   const ym = D.selectedMonth;
   const txM = D.transactions.filter(t=>t.date.startsWith(ym));
   const txT = D.transactions.filter(t=>t.date===td());
-
   const sumI = arr => arr.filter(t=>t.type==='income').reduce((s,t)=>s+t.amount,0);
   const sumE = arr => arr.filter(t=>t.type==='expense').reduce((s,t)=>s+t.amount,0);
-
-  const mInc=sumI(txM), mExp=sumE(txM);
-  const tInc=sumI(txT), tExp=sumE(txT), tProfit=tInc-tExp;
-  const tQty=txT.filter(t=>t.type==='income').reduce((s,t)=>s+(t.qty||0),0);
-  const mQty=txM.filter(t=>t.type==='income').reduce((s,t)=>s+(t.qty||0),0);
+  const mInc=sumI(txM), mExp=sumE(txM), tInc=sumI(txT), tExp=sumE(txT);
 
   // Badge & sidebar month
   const monthName=new Date(ym+'-01').toLocaleDateString('id-ID',{month:'long',year:'numeric'});
@@ -1044,16 +1126,51 @@ function renderDash(){
   document.getElementById('sb-month').textContent=monthName;
 
   // Narasi
-  document.getElementById('g-narasi').innerHTML=buildNarasi(mInc,mExp,tInc);
+  document.getElementById('g-narasi').innerHTML=buildNarasi(mInc,mExp,tInc,tExp);
 
-  // KPI Harian
+  // Render sesuai tab aktif
+  if(D.rekapMode==='harian') renderDashHarian();
+  else renderDashBulanan();
+}
+
+function renderDashHarian(){
+  const txT = D.transactions.filter(t=>t.date===td());
+  const sumI = arr => arr.filter(t=>t.type==='income').reduce((s,t)=>s+t.amount,0);
+  const sumE = arr => arr.filter(t=>t.type==='expense').reduce((s,t)=>s+t.amount,0);
+  const tInc=sumI(txT), tExp=sumE(txT), tProfit=tInc-tExp;
+  const tQty=txT.filter(t=>t.type==='income').reduce((s,t)=>s+(t.qty||0),0);
+
+  // Update narasi khusus harian
+  document.getElementById('g-narasi').innerHTML = buildNarasiHarian(tInc, tExp);
+
+  const todayStr=new Date().toLocaleDateString('id-ID',{day:'2-digit',month:'long',year:'numeric'});
+  document.getElementById('kpi-harian-label').textContent='Rekap Hari Ini — '+todayStr;
   document.getElementById('kh-income').textContent=fmtS(tInc);
   document.getElementById('kh-expense').textContent=fmtS(tExp);
-  document.getElementById('kh-profit').textContent=fmtS(tProfit);
-  document.getElementById('kh-profit').style.color=tProfit>=0?'var(--text-primary)':'var(--danger)';
+  const khp=document.getElementById('kh-profit');
+  khp.textContent=fmtS(tProfit);
+  khp.style.color=tProfit>=0?'var(--text-primary)':'var(--danger)';
   document.getElementById('kh-qty').textContent=tQty+' item';
 
-  // KPI Bulanan
+  // Chart harian
+  renderChartOmzetHarian();
+  renderChartDistHarian(txT);
+  renderTodayTx(txT);
+}
+
+function renderDashBulanan(){
+  const ym = D.selectedMonth;
+  const txM = D.transactions.filter(t=>t.date.startsWith(ym));
+  const sumI = arr => arr.filter(t=>t.type==='income').reduce((s,t)=>s+t.amount,0);
+  const sumE = arr => arr.filter(t=>t.type==='expense').reduce((s,t)=>s+t.amount,0);
+  const mInc=sumI(txM), mExp=sumE(txM);
+  const mQty=txM.filter(t=>t.type==='income').reduce((s,t)=>s+(t.qty||0),0);
+  const monthName=new Date(ym+'-01').toLocaleDateString('id-ID',{month:'long',year:'numeric'});
+
+  // Narasi khusus bulanan
+  document.getElementById('g-narasi').innerHTML = buildNarasiBulanan(mInc, mExp);
+
+  document.getElementById('kpi-bulanan-label').textContent='Rekap '+monthName;
   document.getElementById('kb-income').textContent=fmtS(mInc);
   document.getElementById('kb-expense').textContent=fmtS(mExp);
   const kbp=document.getElementById('kb-profit');
@@ -1061,12 +1178,7 @@ function renderDash(){
   kbp.style.color=(mInc-mExp)>=0?'var(--text-primary)':'var(--danger)';
   document.getElementById('kb-qty').textContent=mQty+' item';
 
-  // label dinamis
-  const todayStr=new Date().toLocaleDateString('id-ID',{day:'2-digit',month:'long',year:'numeric'});
-  document.getElementById('kpi-harian-label').textContent='Rekap Hari Ini, '+todayStr;
-  document.getElementById('kpi-bulanan-label').textContent='Rekap '+monthName;
-
-  // Charts
+  // Chart bulanan
   renderChartOmzet(7);
   renderChartDist(txM);
   renderProdPerf(txM);
@@ -1125,21 +1237,38 @@ function renderChartDist(txM){
   const total=data.reduce((a,b)=>a+b,0);
   document.getElementById('d-total').textContent=fmtS(total);
 
-  const legend=document.getElementById('d-legend');
+function renderChartDist(txM){
+  const map={};
+  txM.filter(t=>t.type==='income').forEach(t=>{
+    const k=t.productName||'Lain-lain';
+    map[k]=(map[k]||0)+t.amount;
+  });
+  const labels=Object.keys(map), data=Object.values(map);
+  const COLORS_YUKI=['#5bb8f5','#34d399','#7dd4fc','#3398e0','#a5f3fc','#6ee7b7','#38bdf8','#93c5fd'];
+  const COLORS_DARK=['#ff8c42','#ffb347','#e8a020','#f87171','#fb923c','#fbbf24','#f59e0b','#ef4444'];
+  const isDark=document.documentElement.getAttribute('data-theme')==='dark';
+  const COLORS=isDark?COLORS_DARK:COLORS_YUKI;
+
+  const total=data.reduce((a,b)=>a+b,0);
+  const dTotal=document.getElementById('d-total');
+  if(dTotal) dTotal.textContent=fmtS(total);
+
+  const chips=document.getElementById('d-chips');
   const canvas=document.getElementById('c-dist');
   if(cDist){cDist.destroy();cDist=null;}
 
   if(!labels.length){
-    legend.innerHTML='<div class="empty" style="padding:.75rem 0;font-size:.78rem;">Belum ada penjualan</div>';
-    cDist=new Chart(canvas,{type:'doughnut',data:{labels:['Kosong'],datasets:[{data:[1],backgroundColor:['rgba(91,184,245,.15)'],borderWidth:0}]},options:{plugins:{legend:{display:false}},cutout:'68%',responsive:true,maintainAspectRatio:false}});
+    if(chips) chips.innerHTML='<span style="font-size:.75rem;color:var(--text-muted)">Belum ada penjualan</span>';
+    cDist=new Chart(canvas,{type:'doughnut',data:{labels:['Belum ada'],datasets:[{data:[1],backgroundColor:['rgba(91,184,245,.12)'],borderWidth:0}]},options:{plugins:{legend:{display:false},tooltip:{enabled:false}},cutout:'72%',responsive:true,maintainAspectRatio:false}});
     return;
   }
-  legend.innerHTML=labels.map((l,i)=>`<div class="legend-row"><span class="legend-dot" style="background:${COLORS[i%COLORS.length]}"></span><span>${l}</span><span class="legend-val">${fmtS(data[i])}</span></div>`).join('');
+  if(chips) chips.innerHTML=labels.map((l,i)=>`<span class="donut-chip"><span class="donut-chip-dot" style="background:${COLORS[i%COLORS.length]}"></span>${l}</span>`).join('');
   cDist=new Chart(canvas,{
     type:'doughnut',
-    data:{labels,datasets:[{data,backgroundColor:COLORS.slice(0,labels.length),borderWidth:2,borderColor:'var(--bg-surface)',hoverBorderWidth:3}]},
-    options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.label}: ${fmtS(ctx.raw)}`}}},cutout:'68%',responsive:true,maintainAspectRatio:false}
+    data:{labels,datasets:[{data,backgroundColor:COLORS.slice(0,labels.length),borderWidth:3,borderColor:'var(--bg-surface)',hoverBorderWidth:0,hoverOffset:5}]},
+    options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${fmtS(ctx.raw)}`},bodyFont:{size:11,family:'Plus Jakarta Sans'},padding:10,cornerRadius:8}},cutout:'72%',responsive:true,maintainAspectRatio:false}
   });
+}
 }
 
 /* ══════════════════════════════════════
@@ -1179,6 +1308,99 @@ function renderRecentTx(){
       <div class="tx-body">
         <div class="tx-desc">${t.productName||t.category||'Transaksi'}</div>
         <div class="tx-meta">${fmtDate(t.date)}${t.note?' · '+t.note:''}</div>
+      </div>
+      <div class="tx-amt ${t.type}">${t.type==='income'?'+':'-'}${fmtS(t.amount)}</div>
+      <button class="tx-del" onclick="delTx(${t.id})">✕</button>
+    </div>`).join('');
+}
+
+/* ══════════════════════════════════════
+   CHART HARIAN
+══════════════════════════════════════ */
+let cOmzetH=null, cDistH=null;
+
+function renderChartOmzetHarian(){
+  const labels=[],inc=[],exp=[];
+  for(let i=6;i>=0;i--){
+    const d=new Date(); d.setDate(d.getDate()-i);
+    const ds=d.toISOString().slice(0,10);
+    const tx=D.transactions.filter(t=>t.date===ds);
+    labels.push(d.toLocaleDateString('id-ID',{weekday:'short'}));
+    inc.push(tx.filter(t=>t.type==='income').reduce((s,t)=>s+t.amount,0));
+    exp.push(tx.filter(t=>t.type==='expense').reduce((s,t)=>s+t.amount,0));
+  }
+  const canvas=document.getElementById('c-omzet-h');
+  if(!canvas)return;
+  if(cOmzetH){cOmzetH.destroy();cOmzetH=null;}
+  cOmzetH=new Chart(canvas,{
+    type:'bar',
+    data:{labels,datasets:[
+      {label:'Pemasukan',data:inc,backgroundColor:'rgba(52,211,153,.72)',borderRadius:4,borderSkipped:false,maxBarThickness:28},
+      {label:'Pengeluaran',data:exp,backgroundColor:'rgba(248,113,113,.55)',borderRadius:4,borderSkipped:false,maxBarThickness:28},
+    ]},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      layout:{padding:{top:4,bottom:0}},
+      plugins:{
+        legend:{display:true,position:'bottom',labels:{boxWidth:10,font:{size:10,family:'Plus Jakarta Sans'},color:getComputedStyle(document.documentElement).getPropertyValue('--text-muted').trim()||'#80aac8',padding:10}},
+        tooltip:{callbacks:{label:ctx=>' '+fmtS(ctx.raw)}},
+      },
+      scales:{
+        x:{grid:{display:false},ticks:{font:{size:9,family:'Plus Jakarta Sans'},color:'#80aac8',maxRotation:0}},
+        y:{grid:{color:'rgba(91,184,245,0.07)'},border:{dash:[3,3]},ticks:{font:{size:9,family:'Nunito'},color:'#80aac8',callback:v=>fmtS(v)}},
+      }
+    }
+  });
+}
+
+function renderChartDistHarian(txT){
+  const map={};
+  txT.filter(t=>t.type==='income').forEach(t=>{
+    const k=t.productName||'Lain-lain';
+    map[k]=(map[k]||0)+t.amount;
+  });
+  const labels=Object.keys(map), data=Object.values(map);
+  // Palet warna sesuai tema Yuki (biru-teal-cyan family + accent natural)
+  const COLORS_YUKI=['#5bb8f5','#34d399','#7dd4fc','#3398e0','#a5f3fc','#6ee7b7','#38bdf8','#93c5fd'];
+  const COLORS_DARK=['#ff8c42','#ffb347','#e8a020','#f87171','#fb923c','#fbbf24','#f59e0b','#ef4444'];
+  const isDark=document.documentElement.getAttribute('data-theme')==='dark';
+  const COLORS=isDark?COLORS_DARK:COLORS_YUKI;
+
+  const total=data.reduce((a,b)=>a+b,0);
+  const dTotal=document.getElementById('dh-total');
+  if(dTotal) dTotal.textContent=fmtS(total);
+
+  // Render chips legend
+  const chips=document.getElementById('dh-chips');
+  const canvas=document.getElementById('c-dist-h');
+  if(!canvas)return;
+  if(cDistH){cDistH.destroy();cDistH=null;}
+
+  if(!labels.length){
+    if(chips) chips.innerHTML='<span style="font-size:.75rem;color:var(--text-muted)">Belum ada penjualan hari ini</span>';
+    cDistH=new Chart(canvas,{type:'doughnut',data:{labels:['Belum ada'],datasets:[{data:[1],backgroundColor:['rgba(91,184,245,.12)'],borderWidth:0}]},options:{plugins:{legend:{display:false},tooltip:{enabled:false}},cutout:'72%',responsive:true,maintainAspectRatio:false}});
+    return;
+  }
+  if(chips) chips.innerHTML=labels.map((l,i)=>`<span class="donut-chip"><span class="donut-chip-dot" style="background:${COLORS[i%COLORS.length]}"></span>${l}</span>`).join('');
+  cDistH=new Chart(canvas,{
+    type:'doughnut',
+    data:{labels,datasets:[{data,backgroundColor:COLORS.slice(0,labels.length),borderWidth:3,borderColor:'var(--bg-surface)',hoverBorderWidth:0,hoverOffset:5}]},
+    options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${fmtS(ctx.raw)}`},bodyFont:{size:11,family:'Plus Jakarta Sans'},padding:10,cornerRadius:8}},cutout:'72%',responsive:true,maintainAspectRatio:false}
+  });
+}
+
+function renderTodayTx(txT){
+  const el=document.getElementById('today-tx');
+  if(!el)return;
+  const sorted=[...txT].sort((a,b)=>b.id-a.id);
+  if(!sorted.length){el.innerHTML='<div class="empty"><div class="empty-ico">📋</div><p style="font-size:.8rem">Belum ada transaksi hari ini</p></div>';return;}
+  const catIco={'Belanja Bahan':'🛒','Operasional':'⚙️','Gaji':'👷','Gas & Kompor':'🔥','Lain-lain':'📝'};
+  el.innerHTML=sorted.map(t=>`
+    <div class="tx-row">
+      <div class="tx-ico" style="background:${t.type==='income'?'rgba(52,211,153,.12)':'rgba(248,113,113,.1)'}">${t.productIcon||catIco[t.category]||'📝'}</div>
+      <div class="tx-body">
+        <div class="tx-desc">${t.productName||t.category||'Transaksi'}</div>
+        <div class="tx-meta">${t.type==='income'?`${t.qty||0} ${t.productName||'item'}`:t.category||'-'}${t.note?' · '+t.note:''}</div>
       </div>
       <div class="tx-amt ${t.type}">${t.type==='income'?'+':'-'}${fmtS(t.amount)}</div>
       <button class="tx-del" onclick="delTx(${t.id})">✕</button>
@@ -1315,19 +1537,18 @@ function renderSettings(){
     const profit=p.price-p.hpp;
     const margin=p.price?((profit/p.price)*100).toFixed(0):'0';
     const isDef=DEFAULT.some(d=>d.id===p.id);
+    // Semua produk bisa diedit; produk default pakai ID khusus untuk ditemukan
     return `<div class="pk-row">
       <div class="pk-ico">${p.icon}</div>
       <div class="pk-info">
-        <div class="pk-name">${p.name}</div>
+        <div class="pk-name">${p.name}${isDef?' <span style="font-size:.6rem;color:var(--text-muted);background:var(--bg-elevated);padding:.1rem .4rem;border-radius:99px;vertical-align:middle">default</span>':''}</div>
         <div class="pk-det">Jual: ${fmt(p.price)}/${p.unit} · HPP: ${fmt(p.hpp)}</div>
         <div class="pk-profit">+${fmt(profit)}/satuan · Margin ${margin}%</div>
       </div>
-      ${isDef
-        ? '<span style="font-size:.66rem;color:var(--text-muted);background:var(--bg-elevated);padding:.18rem .5rem;border-radius:99px">default</span>'
-        : `<div class="pk-acts">
-            <button class="pk-act edit" onclick="openPkModal(${i-DEFAULT.length})">✏️</button>
-            <button class="pk-act del" onclick="delPk(${i-DEFAULT.length})">🗑️</button>
-           </div>`}
+      <div class="pk-acts">
+        <button class="pk-act edit" onclick="openPkModalById('${p.id}')">✏️</button>
+        ${isDef?'':`<button class="pk-act del" onclick="delPk(${i-DEFAULT.length})">🗑️</button>`}
+      </div>
     </div>`;
   }).join('');
 }
@@ -1367,9 +1588,23 @@ function updPkMargin(){
 
 function openPkModal(idx=null){
   D.editPkIdx=idx;
+  D.editPkId=null;
   const pk=idx!==null?D.products[idx]:null;
   D.selEmoji=pk?.icon||'🍽️';
   document.getElementById('m-pk-title').textContent=pk?'✏️ Edit Produk':'➕ Tambah Produk';
+  document.getElementById('m-pk-body').innerHTML=buildPkForm(pk);
+  document.getElementById('m-paketan').classList.add('show');
+  setTimeout(updPkMargin,80);
+}
+// Edit produk berdasarkan ID (bisa produk default maupun custom)
+function openPkModalById(prodId){
+  const allP=allProds();
+  const pk=allP.find(p=>p.id===prodId);
+  if(!pk)return;
+  D.selEmoji=pk.icon||'🍽️';
+  D.editPkId=prodId; // simpan id asli
+  D.editPkIdx=null;
+  document.getElementById('m-pk-title').textContent='✏️ Edit Produk';
   document.getElementById('m-pk-body').innerHTML=buildPkForm(pk);
   document.getElementById('m-paketan').classList.add('show');
   setTimeout(updPkMargin,80);
@@ -1382,9 +1617,30 @@ function savePk(){
   const unit=document.getElementById('pk-unit')?.value||'porsi';
   if(!name){showToast('Nama wajib diisi!','error');return;}
   if(!price){showToast('Harga jual wajib diisi!','error');return;}
-  const prod={id:'c-'+Date.now(),name,icon:D.selEmoji,price,hpp,unit};
-  if(D.editPkIdx!==null){prod.id=D.products[D.editPkIdx].id;D.products[D.editPkIdx]=prod;showToast('Produk diperbarui! ✅','success');}
-  else{D.products.push(prod);showToast('Produk ditambahkan! ✅','success');}
+
+  // Edit via ID (termasuk produk default)
+  if(D.editPkId!==null){
+    const isDefault=DEFAULT.some(d=>d.id===D.editPkId);
+    const prod={id:D.editPkId,name,icon:D.selEmoji,price,hpp,unit};
+    if(isDefault){
+      // Produk default: simpan override ke D.products dengan id yang sama
+      const existIdx=D.products.findIndex(p=>p.id===D.editPkId);
+      if(existIdx>=0) D.products[existIdx]=prod;
+      else D.products.unshift(prod); // sisipkan di depan sebagai override
+    } else {
+      const idx=D.products.findIndex(p=>p.id===D.editPkId);
+      if(idx>=0) D.products[idx]=prod;
+    }
+    showToast('Produk diperbarui! ✅','success');
+  } else if(D.editPkIdx!==null){
+    const prod={id:D.products[D.editPkIdx].id,name,icon:D.selEmoji,price,hpp,unit};
+    D.products[D.editPkIdx]=prod;
+    showToast('Produk diperbarui! ✅','success');
+  } else {
+    D.products.push({id:'c-'+Date.now(),name,icon:D.selEmoji,price,hpp,unit});
+    showToast('Produk ditambahkan! ✅','success');
+  }
+  D.editPkId=null; D.editPkIdx=null;
   save();closePkModal();renderSettings();
 }
 function delPk(idx){
@@ -1401,6 +1657,8 @@ function setTheme(t,btn){
   // destroy & re-render charts dengan warna baru
   if(cOmzet){cOmzet.destroy();cOmzet=null;}
   if(cDist){cDist.destroy();cDist=null;}
+  if(cOmzetH){cOmzetH.destroy();cOmzetH=null;}
+  if(cDistH){cDistH.destroy();cDistH=null;}
   renderDash();
 }
 
